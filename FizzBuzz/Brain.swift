@@ -10,10 +10,11 @@ import Foundation
 
 class Brain {
 
-    enum Result {
+    enum Result: Equatable {
         case fizz
         case buzz
         case fizzbuzz
+        case none(number: Int)
     }
 
     func isNumber(_ number: Int, divisibleBy divisor: Int) -> Bool {
@@ -32,12 +33,15 @@ class Brain {
         return isDivisibleByThree(number: number) && isDivisibleByFive(number: number)
     }
 
-//    func check(number: Int) -> Result {
-//        switch  {
-//        case <#pattern#>:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
+    func check(number: Int) -> Result {
+        if isDivisibleByFifteen(number: number) {
+            return .fizzbuzz
+        } else if isDivisibleByThree(number: number) {
+            return .fizz
+        } else if isDivisibleByFive(number: number) {
+            return .buzz
+        } else {
+            return .none(number: number)
+        }
+    }
 }

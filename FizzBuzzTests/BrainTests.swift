@@ -67,6 +67,11 @@ class BrainTests: XCTestCase {
         XCTAssertEqual(result, .fizzbuzz)
     }
 
+    func testSayNumber() {
+        let result = brain.check(number: 1)
+        XCTAssertEqual(result, .none(number: 1))
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
