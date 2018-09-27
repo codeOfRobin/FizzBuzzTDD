@@ -11,7 +11,15 @@ import Foundation
 class Game {
     var score = 0
 
-    func play() {
-        score += 1
+    let brain = Brain()
+
+    func play(move: Brain.Result) -> Bool {
+
+        let result = brain.check(number: score) == move
+
+        if result {
+            score += 1
+        }
+        return result
     }
 }
