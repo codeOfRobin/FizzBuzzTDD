@@ -19,3 +19,9 @@ class GamePlayingView: UIView {
     */
 
 }
+
+extension GamePlayingView: Themeable {
+    func applyTheme(_ theme: Theme) {
+        self.backgroundColor = theme.colors.backgroundColor
+    }
+}

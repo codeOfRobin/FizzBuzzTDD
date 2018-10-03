@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let gamePlayingView = GamePlayingView()
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -18,13 +20,39 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    var flag = false
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .red
         // Do any additional setup after loading the view, typically from a nib.
+
+        self.view.backgroundColor = .white
+        self.animate()
+
     }
 
+    func animate() {
+        UIView.animate(withDuration: 2.5, delay: 0.0, options: [], animations: {
+            self.backgroundColor()
+        }, completion: {_ in
+            self.flag = !self.flag
+            self.animate()
+        })
+    }
+
+    func backgroundColor() {
+        if self.flag {
+            self.view.backgroundColor = .green
+        } else {
+            self.view.backgroundColor = .red
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        gamePlayingView.frame = view.bounds
+    }
 
 }
 
