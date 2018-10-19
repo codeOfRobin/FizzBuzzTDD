@@ -22,36 +22,37 @@ class ViewController: UIViewController {
 
     var flag = false
 
+    var theme: Theme {
+        if flag {
+            return DefaultTheme()
+        } else {
+            return DarkTheme()
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.view.addSubview(gamePlayingView)
         self.view.backgroundColor = .white
         self.animate()
 
     }
 
     func animate() {
-        UIView.animate(withDuration: 2.5, delay: 0.0, options: [], animations: {
-            self.backgroundColor()
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.gamePlayingView.applyTheme(self.theme)
         }, completion: {_ in
             self.flag = !self.flag
             self.animate()
         })
     }
 
-    func backgroundColor() {
-        if self.flag {
-            self.view.backgroundColor = .green
-        } else {
-            self.view.backgroundColor = .red
-        }
-    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        gamePlayingView.frame = view.bounds
+        gamePlayingView.frame = view.bounds
     }
 
 }

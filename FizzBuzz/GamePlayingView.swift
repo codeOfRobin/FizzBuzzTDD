@@ -18,6 +18,30 @@ class GamePlayingView: UIView {
     }
     */
 
+    let scoreLabel = UILabel()
+    let fizzButton = UIButton()
+    let buzzButton = UIButton()
+    let FizzBuzzButton = UIButton()
+
+    init() {
+        super.init(frame: .zero)
+
+        self.addSubview(scoreLabel)
+        self.addSubview(fizzButton)
+
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+
+    func configure(withScore: Int) {
+
+    }
+
 }
 
 extension GamePlayingView: Themeable {
